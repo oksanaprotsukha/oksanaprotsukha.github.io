@@ -1,7 +1,31 @@
 ---
-title: "oksanaprotsukha.github.io"
+title: "Oksana Protsukha"
+image: img/Profile_Picture.jpeg
+toc: false
+about: 
+  template: trestles
+  image-shape: round
+  image-width: 20em
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/oksanaprotsukha/
+    - icon: github
+      text: GitHub
+      href: https://github.com/oksanaprotsukha
+    - icon: envelope
+      text: Email
+      href: mailto:ok.protsukha@gmail.com
 ---
+### About
 
-This is a Quarto website.
+:::{#hero-heading}
+Oksana is deeply passionate about environmental data science and its critical role in the decarbonization and energy sectors. She holds an MBA from San Francisco State University and is currently pursuing a Master's degree at Bren School. With eight years of experience as a Business Analyst and Technical Product Manager at Tesla Inc., she is now actively pursuing a career pivot into environmental data science. Her goal is to assist companies in addressing data-related challenges within the energy and decarbonization sectors.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+## Education
+
+Master of Environmental Data Science | University of California, Santa Barbara </br>
+Master of Business Administration | California State University, San Francisco
+
+:::

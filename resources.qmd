@@ -1,0 +1,3 @@
+Useful resources:
+
+[How to create a website with Quatro](https://ucsb-meds.github.io/creating-quarto-websites/)

@@ -1,16 +1,37 @@
 [
   {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Oksana Protsukha",
+    "section": "",
+    "text": "Useful resources:\nHow to create a website with Quatro"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Oksana Protsukha",
+    "section": "",
+    "text": "Oksana is deeply passionate about environmental data science and its critical role in the decarbonization and energy sectors. She holds an MBA from San Francisco State University and is currently pursuing a Master’s degree at Bren School. With eight years of experience as a Business Analyst and Technical Product Manager at Tesla Inc., she is now actively pursuing a career pivot into environmental data science. Her goal is to assist companies in addressing data-related challenges within the energy and decarbonization sectors.\n\n\nMaster of Environmental Data Science | University of California, Santa Barbara  Master of Business Administration | California State University, San Francisco"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Oksana Protsukha",
+    "section": "",
+    "text": "Master of Environmental Data Science | University of California, Santa Barbara  Master of Business Administration | California State University, San Francisco"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Oksana Protsukha",
+    "section": "",
+    "text": "My projects\n-in progress-"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "About this site"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "oksanaprotsukha.github.io",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   }
 ]

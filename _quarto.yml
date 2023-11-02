@@ -3,18 +3,25 @@ project:
   output-dir: docs
 
 website:
-  title: "oksanaprotsukha.github.io"
+  title: "Oksana Protsukha"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - href: projects.qmd
+        text: Projects
+      - href: resources.qmd
+        text: Resources
 
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
     toc: true
+    page-layout: full
+
+editor: visual
 
 
 
