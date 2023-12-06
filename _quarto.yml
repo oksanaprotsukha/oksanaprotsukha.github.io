@@ -9,7 +9,7 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - href: projects.qmd
+      - href: posts.qmd
         text: Projects
       - href: resources.qmd
         text: Resources
@@ -22,6 +22,7 @@ format:
     page-layout: full
 
 editor: visual
-
+citation:
+  url: https://oksanaprotsukha.github.io/portfolio/projects/2023-11-06-my-first-post.html
 
 
