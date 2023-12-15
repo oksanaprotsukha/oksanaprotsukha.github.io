@@ -1,6 +1,6 @@
 ---
-title: "Analysis of the Impact of Socio-Economic Indicators on Recovery From the 2021 Texas Electric Grid Blackout"
-description: In this blog post, we explore the question of whether census tracts within low-income quintiles experienced more delays in the recovery of electricity services compared to those in higher income levels.
+title: "Analysis of the Impact of Socio-Economic Indicators on Recovery From the 2021 Texas Electric Grid Blackout" 
+description: In this blog post, we examine whether low-income census tracts faced more delays in electricity service recovery than higher-income areas.
 format: html
 editor: visual
 author: 
@@ -94,7 +94,7 @@ I used the following libraries throughout the analysis:
 
 ```{r echo=FALSE}
 #| echo: FALSE
-
+rm(list = ls())
 knitr::opts_knit$set(root.dir = "/Users/oksi/workspace/texas-grid-blackout-2021/")
 ```
 
@@ -117,8 +117,6 @@ library(here)
 library(patchwork)
 library(RColorBrewer)
 library(ggthemes)
-
-rm(list = ls())
 ```
 
 #### Identifying Blackout Locations
@@ -131,8 +129,6 @@ I loaded satellite raster data (files with extention `*.tif`) using `stars` pack
 
 ```{r blackout_locations, results='hide'}
 #| code-fold: true
-
-# Load data
 nt_20210207_tile5 <- read_stars('data/VNP46A1/VNP46A1.A2021038.h08v05.001.2021039064328.tif')
 nt_20210207_tile6 <- read_stars('data/VNP46A1/VNP46A1.A2021038.h08v06.001.2021039064329.tif')
 nt_20210207 <- st_mosaic(nt_20210207_tile5, nt_20210207_tile6) # combine two tiles
