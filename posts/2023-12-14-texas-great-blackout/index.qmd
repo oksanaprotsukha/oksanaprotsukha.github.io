@@ -10,7 +10,7 @@ author:
     affiliation: Master of Environmental Data Science Program
     affiliation-url: https://ucsb-meds.github.io
 date: 2023-12-14
-categories: [geospatial,energy,environmental justice,R]
+categories: [GeoSpatial,Energy,Environmental Justice,R]
 title-block-banner: texas_grid.jpeg
 image: texas_grid.jpeg
 ---
