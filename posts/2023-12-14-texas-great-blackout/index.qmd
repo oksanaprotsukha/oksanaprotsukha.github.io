@@ -1,5 +1,6 @@
 ---
 title: "Analysis of the Impact of Socio-Economic Indicators on Recovery From the 2021 Texas Electric Grid Blackout"
+description: In this blog post, we explore the question of whether census tracts within low-income quintiles experienced more delays in the recovery of electricity services compared to those in higher income levels.
 format: html
 editor: visual
 author: 
@@ -11,6 +12,7 @@ author:
 date: 2023-12-14
 categories: [geospatial,energy,environmental justice,R]
 title-block-banner: texas_grid.jpeg
+image: texas_grid.jpeg
 ---
 
 ## Overview
@@ -151,7 +153,7 @@ blkout <- (nt_20210207 - nt_20210216) > 200
 blkout[blkout == FALSE] <- NA 
 ```
 
-To proceed, I narrowed down the blackout locations to the Houston metropolitan area by cropping the blackout raster to Houston metropolitan area.  To do so I converted the raster with the blackout locations into an `sf` object and constructed a `polygon` with Houston boundaries.\
+To proceed, I narrowed down the blackout locations to the Houston metropolitan area by cropping the blackout raster to the area of interest.  To do so I converted the raster with the blackout locations into an `sf` object and constructed a `polygon` with the boundaries of Houston metropolitan area.\
 
 ⚠️To maintain an accuracy of analysis I applied EPSG: 3083 (NAD83 / Texas Centric Albers Equal Area) projection for the cropped blackout dataset, specifically the dataframe with Houston metropolitan area geometries.
 

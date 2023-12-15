@@ -8,6 +8,7 @@
 
 <meta name="author" content="Oksana Protsukha">
 <meta name="dcterms.date" content="2023-12-14">
+<meta name="description" content="In this blog post, we explore the question of whether census tracts within low-income quintiles experienced more delays in the recovery of electricity services compared to those in higher income levels.">
 
 <title>Oksana Protsukha - Analysis of the Impact of Socio-Economic Indicators on Recovery From the 2021 Texas Electric Grid Blackout</title>
 <style>
@@ -152,7 +153,12 @@ background-size: cover;
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
       <h1 class="title">Analysis of the Impact of Socio-Economic Indicators on Recovery From the 2021 Texas Electric Grid Blackout</h1>
-                                <div class="quarto-categories">
+                  <div>
+        <div class="description">
+          In this blog post, we explore the question of whether census tracts within low-income quintiles experienced more delays in the recovery of electricity services compared to those in higher income levels.
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">geospatial</div>
                 <div class="quarto-category">energy</div>
                 <div class="quarto-category">environmental justice</div>
@@ -359,7 +365,7 @@ background-size: cover;
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set locations that didn't experience blackout to NA </span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>blkout[blkout <span class="sc">==</span> <span class="cn">FALSE</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To proceed, I narrowed down the blackout locations to the Houston metropolitan area by cropping the blackout raster to Houston metropolitan area.&nbsp; To do so I converted the raster with the blackout locations into an <code>sf</code> object and constructed a <code>polygon</code> with Houston boundaries.<br>
+<p>To proceed, I narrowed down the blackout locations to the Houston metropolitan area by cropping the blackout raster to the area of interest.&nbsp; To do so I converted the raster with the blackout locations into an <code>sf</code> object and constructed a <code>polygon</code> with the boundaries of Houston metropolitan area.<br>
 </p>
 <p>⚠️To maintain an accuracy of analysis I applied EPSG: 3083 (NAD83 / Texas Centric Albers Equal Area) projection for the cropped blackout dataset, specifically the dataframe with Houston metropolitan area geometries.</p>
 <div class="cell">
