@@ -8,7 +8,7 @@
 
 <meta name="author" content="Oksana Protsukha">
 <meta name="dcterms.date" content="2023-12-14">
-<meta name="description" content="In this blog post, we explore the question of whether census tracts within low-income quintiles experienced more delays in the recovery of electricity services compared to those in higher income levels.">
+<meta name="description" content="In this blog post, we investigate whether low-income census tracts faced more delays in electricity service recovery than higher-income areas.">
 
 <title>Oksana Protsukha - Analysis of the Impact of Socio-Economic Indicators on Recovery From the 2021 Texas Electric Grid Blackout</title>
 <style>
@@ -155,7 +155,7 @@ background-size: cover;
       <h1 class="title">Analysis of the Impact of Socio-Economic Indicators on Recovery From the 2021 Texas Electric Grid Blackout</h1>
                   <div>
         <div class="description">
-          In this blog post, we explore the question of whether census tracts within low-income quintiles experienced more delays in the recovery of electricity services compared to those in higher income levels.
+          In this blog post, we investigate whether low-income census tracts faced more delays in electricity service recovery than higher-income areas.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -303,8 +303,12 @@ background-size: cover;
 <ul>
 <li>The scope of the analysis was limited to Houston metropolitan area.<br>
 </li>
-<li>Analysis was done only for one day (February 16th 2021) out of 4-5 days of the total blackout period.</li>
-<li>Only income was considered in the analysis.</li>
+<li>Analysis was done only for one day (February 16th 2021) out of 4-5 days of the total blackout period.<br>
+</li>
+<li>Analysis primarily relied on the satellite data (VIIRS) to identify blackouts.<br>
+</li>
+<li>Only income was considered in the analysis.<br>
+</li>
 </ul>
 </section>
 </section>
@@ -332,9 +336,7 @@ background-size: cover;
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -346,14 +348,13 @@ background-size: cover;
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nt_20210207_tile5 <span class="ot">&lt;-</span> <span class="fu">read_stars</span>(<span class="st">'data/VNP46A1/VNP46A1.A2021038.h08v05.001.2021039064328.tif'</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>nt_20210207_tile6 <span class="ot">&lt;-</span> <span class="fu">read_stars</span>(<span class="st">'data/VNP46A1/VNP46A1.A2021038.h08v06.001.2021039064329.tif'</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>nt_20210207 <span class="ot">&lt;-</span> <span class="fu">st_mosaic</span>(nt_20210207_tile5, nt_20210207_tile6) <span class="co"># combine two tiles</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>nt_20210216_tile5 <span class="ot">&lt;-</span> <span class="fu">read_stars</span>(<span class="st">'data/VNP46A1/VNP46A1.A2021047.h08v05.001.2021048091106.tif'</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>nt_20210216_tile6 <span class="ot">&lt;-</span> <span class="fu">read_stars</span>(<span class="st">'data/VNP46A1/VNP46A1.A2021047.h08v06.001.2021048091105.tif'</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>nt_20210216 <span class="ot">&lt;-</span> <span class="fu">st_mosaic</span>(nt_20210216_tile5, nt_20210216_tile6) <span class="co"># combine two tiles</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nt_20210207_tile5 <span class="ot">&lt;-</span> <span class="fu">read_stars</span>(<span class="st">'data/VNP46A1/VNP46A1.A2021038.h08v05.001.2021039064328.tif'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nt_20210207_tile6 <span class="ot">&lt;-</span> <span class="fu">read_stars</span>(<span class="st">'data/VNP46A1/VNP46A1.A2021038.h08v06.001.2021039064329.tif'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>nt_20210207 <span class="ot">&lt;-</span> <span class="fu">st_mosaic</span>(nt_20210207_tile5, nt_20210207_tile6) <span class="co"># combine two tiles</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>nt_20210216_tile5 <span class="ot">&lt;-</span> <span class="fu">read_stars</span>(<span class="st">'data/VNP46A1/VNP46A1.A2021047.h08v05.001.2021048091106.tif'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>nt_20210216_tile6 <span class="ot">&lt;-</span> <span class="fu">read_stars</span>(<span class="st">'data/VNP46A1/VNP46A1.A2021047.h08v06.001.2021048091105.tif'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>nt_20210216 <span class="ot">&lt;-</span> <span class="fu">st_mosaic</span>(nt_20210216_tile5, nt_20210216_tile6) <span class="co"># combine two tiles</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Next, I created a raster with the difference in light intensity between February 7 and 16, 2021 and reclassified it to the locations that experienced a drop in light intensity of more than 200 nW cm<sup>-2</sup>sr<sup>-1</sup>.<br>
@@ -594,7 +595,10 @@ OR type in ('residential', 'apartments', 'house', 'static_caravan', 'detached')<
 <section id="next-steps" class="level3">
 <h3 class="anchored" data-anchor-id="next-steps">Next steps</h3>
 <ol type="1">
-<li>Extend the analysis to the rest of the period of the blackouts: February 15-19, 2021.</li>
+<li>Extend the analysis to the rest of the period of the blackouts: February 15-19, 2021.<br>
+</li>
+<li>Include blackouts data from utilities to make the analysis more robust.<br>
+</li>
 <li>Include other socio-economic indicators: unemployment rate, race, education level.</li>
 </ol>
 <section id="attribution" class="level4">

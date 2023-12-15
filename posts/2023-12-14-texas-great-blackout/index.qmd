@@ -1,6 +1,6 @@
 ---
 title: "Analysis of the Impact of Socio-Economic Indicators on Recovery From the 2021 Texas Electric Grid Blackout" 
-description: In this blog post, we examine whether low-income census tracts faced more delays in electricity service recovery than higher-income areas.
+description: In this blog post, we investigate whether low-income census tracts faced more delays in electricity service recovery than higher-income areas.
 format: html
 editor: visual
 author: 
@@ -81,8 +81,9 @@ I relied on geospatial data and tools to identify locations impacted by the blac
 ### Limitations
 
 -   The scope of the analysis was limited to Houston metropolitan area.\
--   Analysis was done only for one day (February 16th 2021) out of 4-5 days of the total blackout period.
--   Only income was considered in the analysis.
+-   Analysis was done only for one day (February 16th 2021) out of 4-5 days of the total blackout period.\
+-   Analysis primarily relied on the satellite data (VIIRS) to identify blackouts.\
+-   Only income was considered in the analysis.\
 
 ## Analysis
 
@@ -469,8 +470,9 @@ The primary limitation of the analysis is the lack of data on household activiti
 
 ### Next steps
 
-1.  Extend the analysis to the rest of the period of the blackouts: February 15-19, 2021.
-2.  Include other socio-economic indicators: unemployment rate, race, education level.
+1.  Extend the analysis to the rest of the period of the blackouts: February 15-19, 2021.\
+2.  Include blackouts data from utilities to make the analysis more robust.\
+3.  Include other socio-economic indicators: unemployment rate, race, education level.
 
 #### Attribution
 
