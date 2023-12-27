@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Oksana Protsukha">
+<meta name="dcterms.date" content="2023-12-27">
+<meta name="description" content="Explore biases woven into the data science life cycle and how they impact outcomes.">
+
+<title>Oksana Protsukha - Bias in Data Science</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Oksana Protsukha</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html" rel="" target="">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Bias in Data Science</h1>
+                  <div>
+        <div class="description">
+          Explore biases woven into the data science life cycle and how they impact outcomes.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Data Science</div>
+                <div class="quarto-category">Environmental Justice</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://oksanaprotsukha.github.io/portfolio/">Oksana Protsukha</a> </p>
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              <a href="https://ucsb-meds.github.io">
+              Master of Environmental Data Science Program
+              </a>
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 27, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#bias-in-data-science" id="toc-bias-in-data-science" class="nav-link active" data-scroll-target="#bias-in-data-science">Bias in Data Science</a>
+  <ul class="collapse">
+  <li><a href="#what-is-data-science" id="toc-what-is-data-science" class="nav-link" data-scroll-target="#what-is-data-science">What is Data Science?</a></li>
+  <li><a href="#data-science-life-cycle" id="toc-data-science-life-cycle" class="nav-link" data-scroll-target="#data-science-life-cycle">Data science life cycle</a></li>
+  <li><a href="#data-science-life-cycle-phases" id="toc-data-science-life-cycle-phases" class="nav-link" data-scroll-target="#data-science-life-cycle-phases">Data science life cycle phases</a></li>
+  <li><a href="#aggregated-view-on-data-life-cycle-phases-biases" id="toc-aggregated-view-on-data-life-cycle-phases-biases" class="nav-link" data-scroll-target="#aggregated-view-on-data-life-cycle-phases-biases">Aggregated view on Data Life Cycle Phases &amp; Biases</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+<section id="bias-in-data-science" class="level1">
+<h1>Bias in Data Science</h1>
+<section id="what-is-data-science" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-data-science">What is Data Science?</h3>
+<p>These days we hear about data science all the time; it is all around us, embedded in the latest AI news about ChatGPT, as well as in mundane posts on social media. But what is it exactly? There are many opinions out there, with attempts to capture the essence of data science. My favorite one is from Cassie Kozyrkov, Chief Decision Scientist: “Data science is the discipline of making data useful.” Now, what does it mean to be “useful”? I am going to define it as guiding decisions to create a more equitable and comfortable world to live in. You can choose your own definitions, but for the purposes of this post we will use this one. So, how do we go about making the world a better place with data? I propose to start with the data science life cycle framework, which I developed to aid in identifying inherent biases at each phase of a data analysis project. This tool is designed to raise awareness of the various biases in data science, and promote a more responsible approach of working with data and making it useful.</p>
+</section>
+<section id="data-science-life-cycle" class="level3">
+<h3 class="anchored" data-anchor-id="data-science-life-cycle">Data science life cycle</h3>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="DataScienceLifeCycle.png" class="img-fluid figure-img" style="width:85.0%" alt="Dunkelflaute solutions"></p>
+</figure>
+</div>
+<p><strong>Data science life cycle</strong> is the journey to uncover patterns in the world around us to solve real-life problems with the help of data and data science tools. We can define the following steps of this journey: problem definition, data collection, data processing, data analysis, peer review, data communication and data consumption. While not all steps apply to every data analysis project or study, these capture the essence of the process. Next, let’s review each step in more detail and discuss any obvious and not so obvious pitfalls.</p>
+</section>
+<section id="data-science-life-cycle-phases" class="level3">
+<h3 class="anchored" data-anchor-id="data-science-life-cycle-phases">Data science life cycle phases</h3>
+<section id="problem-definition." class="level4">
+<h4 class="anchored" data-anchor-id="problem-definition."><strong>Problem definition</strong>.</h4>
+<p>During this step, a data professional or researcher states a research question, defines a problem statement, establishes objectives, and defines the success criteria. The problem statement guides data collection and influences all subsequent steps. It’s important to understand that two different people might have very different convictions about the same subject or research goals. This is known as a researcher bias [1].<br>
+<strong>Scenario</strong>: For instance, we are trying to understand whether fossil fuels are directly related to the warming effect of the Earth. A researcher working at a fossil fuel company might be interested in identifying the patterns that would show that fossil fuels have lower impact than usually thought. At the same time, an analyst at a renewable energy company, tasked with advocating for replacing fossil fuels, may focus on uncovering patterns that reveal the direct link between fossil fuel consumption and greenhouse gas emissions, while downplaying potential negative impacts on employment during the transition.</p>
+<p><img src="biasrearch.jpg" class="img-fluid" style="float: right;width:40.0%" alt="Dunkelflaute solutions"></p>
+</section>
+<section id="data-collection." class="level4">
+<h4 class="anchored" data-anchor-id="data-collection."><strong>Data collection</strong>.</h4>
+<p>This is a critical step in the research as it directly impacts the quality of data that data professionals will be working with in the future. Data can be collected using multiple different methods, which can be divided into active and passive categories. Active data collection methods involve direct interaction with the subjects of research via surveys, field studies, literature review, interviews and others. Passive methods, on the other hand, rely on existing technologies to sample data, such as remote sensing. While passive data collection naturally offers more objectivity, it is not entirely free of bias. In the end, it’s humans who program the machines and either due to complexity, cost or simple typos might introduce errors in the collection process, compromising data quality. Automation bias - the tendency to depend excessively on automated systems, which can lead to mistaken automated information overriding correct decisions - is real and it’s important to be aware of it. Active methods, in their turn, are prone to multiple biases such as sampling bias, confirmation bias, interviewer bias, overgeneralization bias and availability bias among others.<br>
+<strong>Scenario</strong>: A group of domestic and international researchers is studying climate adaptation across communities in Ghana. In Ghana most of the infrastructure is concentrated in the South of the country, where the weather conditions are milder and getting to the North of the country is expensive and time consuming [2]. Therefore researchers decide to focus on sampling the data from the Southern regions and if required extrapolate the findings to the rest of the country. In this scenario researchers committed availability, selection and interviewer biases since they collected data that was readily available and does not accurately represent the rest of the regions of the country. Though the data might be of high quality it cannot be used to draw conclusions about the whole country.</p>
+</section>
+<section id="data-processing." class="level4">
+<h4 class="anchored" data-anchor-id="data-processing."><strong>Data processing</strong>.</h4>
+<p>This phase involves getting collected data ready for processing by removing or transforming unwanted or noisy data from a dataset, classifying values, reorganizing and joining datasets collected at different regions or over different periods, and others. Analysts and data professionals processing the datasets can introduce errors and biases into the final datasets if they are not careful. For instance, they can accidentally include or exclude certain data points trying to remove noise (selection bias); introduce unintentional errors or incorrect interpretations based on their perspectives or expectations (observer bias); introduce unwanted temporal distortions, affecting the chronological order of events in the data (time-order bias).<br>
+<strong>Scenario</strong>: A group of students is tasked with processing historical annual precipitation data across different regions of the world to create input for a machine learning prediction model. When they combined datasets with precipitation data from the European continent with the dataset from the North American continent, they forgot to apply the correct daytime format. As a result, time-order bias slipped unnoticed into the final dataset.</p>
+</section>
+<section id="data-analysis-modeling." class="level4">
+<h4 class="anchored" data-anchor-id="data-analysis-modeling."><strong>Data analysis &amp; modeling</strong>.</h4>
+At this stage, data professionals create data models and evaluate their performance and interpret the outputs.
+<figure style="float: left; margin: 0 0 10px 10px; padding: 10px;" class="figure">
+<img src="https://imgs.xkcd.com/comics/machine_learning.png" alt="Alt Text" fig-alt="Dunkelflaute solutions" width="90%" class="figure-img">
+<figcaption class="figure-caption">
+<p>
+Source: <a href="https://xkcd.com/1838/">XKCD: Machine Learning</a>
+</p>
+</figcaption>
+</figure>
+<p>This is the phase that generates findings, which can be influenced by a variety of biases, including the two most prevalent ones: aggregation bias and confirmation bias. Aggregation Bias occurs when the data inputs contain prejudices, which are then amplified in the outputs of a model. Confirmation bias happens when a person designing a model unconsciously favors information that confirms their pre-existing beliefs or hypotheses.<br>
+</p>
+<p><strong>Scenario (real-life scenario)</strong>: Law enforcement agencies in the US use criminal risk assessment algorithms based on historical crime data for training predictive models. While in theory these models aim to enhance the accuracy of predicting future crimes and guide the allocation of policing resources, in practice, they rely on historical crime data with baked-in biases from policing practices—such as over-policing in certain neighborhoods or against specific demographics. As a result, predictions from these models can lead to an increased police presence in already over-policed areas, perpetuating a cycle of bias and potentially exacerbating social inequalities [2].<br>
+</p>
+</section>
+<section id="peer-review." class="level4">
+<h4 class="anchored" data-anchor-id="peer-review."><strong>Peer review</strong>.</h4>
+<p>Though it might not be applicable to all data science projects (it should be), it’s an important phase tasked with reviewing the findings, uncovering any biases and erroneous assumptions, and suggesting improvements. If a reviewer lacks sufficient expertise or motivation, they might overlook critical issues with the analysis. Moreover, endorsing or publishing a biased study might lead to an authority bias, where the study is given more consideration than it deserves, potentially propagating incorrect conclusions into decision-making.<br>
+<strong>Scenario (real-life example)</strong>: Dr.&nbsp;Wei-Hock Soon, a scientist at the Harvard-Smithsonian Center for Astrophysics, published multiple studies showing that the sun’s energy can largely explain recent global warming. Though the study has been largely debunked, it got support from the climate denial groups and used in debates related to climate change policies [3].</p>
+</section>
+<section id="data-communication." class="level4">
+<h4 class="anchored" data-anchor-id="data-communication."><strong>Data communication</strong>.</h4>
+This might be one the most critical phases of data science - making it comprehensible and available to the general public. This is also the stage when the facts can be easily distorted and misinterpreted. It is easy to manipulate data without committing illegal actions or presenting bogus findings. Data visualizations, in particular, can be a tool to mislead a reader intentionally or unintentionally. Common issues may include: using the wrong type of chart or graph, including too many variables, using inconsistent scale, poor color choices and others. Likewise, the omission of information perceived by a researcher or publisher as irrelevant or as giving a less favorable review of the paper can lead to the misrepresentation of important findings. This is known as reporting bias, where only a selection of results is included in an analysis, covering only a portion of the relevant evidence. Such practices can result in flawed decisions and misguided future research.
+<figure style="float: center; margin: 0 0 10px 10px; padding: 10px;" class="figure">
+<img src="https://imgs.xkcd.com/comics/cell_phones.png" alt="Alt Text" fig-alt="Dunkelflaute solutions" width="90%" class="figure-img">
+<figcaption class="figure-caption">
+<p>
+Source: <a href="https://xkcd.com/925/">XKCD: Cell Phones</a>
+</p>
+</figcaption>
+</figure>
+</section>
+<section id="data-consumption." class="level4">
+<h4 class="anchored" data-anchor-id="data-consumption."><strong>Data consumption</strong>.</h4>
+<p>This is the final phase of the data science life cycle when findings are applied to solve real-life problems and serve as input for new or follow-up studies. Here, the onus is on the user or data consumer to understand the findings correctly before drawing conclusions. Even if all the preceding steps have successfully eliminated bias, the reader may still introduce a confirmation bias when interpreting the results.<br>
+<strong>Scenario (real-life example)</strong>: A reader of the study on the Covid-19 vaccine holds a preconceived belief that vaccines cause illness. After reading the study, the reader draws the conclusion that because Covid-19 cases increased around the time when the vaccine was released, the vaccine indeed caused Covid-19. This conclusion ignores the fact that other factors played a role in the increase in Covid-19 cases, such as heightened levels of testing and improved monitoring [4].</p>
+</section>
+</section>
+<section id="aggregated-view-on-data-life-cycle-phases-biases" class="level3">
+<h3 class="anchored" data-anchor-id="aggregated-view-on-data-life-cycle-phases-biases">Aggregated view on Data Life Cycle Phases &amp; Biases</h3>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 57%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data Life Cycle Phase</th>
+<th>Tasks</th>
+<th>Common Biases</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Problem definition</td>
+<td>States a research question, defines a problem statement, establishes objectives, and defines success criteria.</td>
+<td>Researcher bias</td>
+</tr>
+<tr class="even">
+<td>Data collection</td>
+<td>Conduct surveys, field studies, literature review, interviews, record observations.</td>
+<td>Sampling bias, confirmation bias, interviewer bias, overgeneralization bias, availability bias</td>
+</tr>
+<tr class="odd">
+<td>Data processing</td>
+<td>Clean data, classify data, remove and transform unwanted or noisy data from a dataset, reorganize, and join datasets collected at different regions or over different periods.</td>
+<td>Selection bias, observer bias, time-to-order bias</td>
+</tr>
+<tr class="even">
+<td>Data analysis &amp; modeling</td>
+<td>Create data models and evaluate their performance and interpret the outputs.</td>
+<td>Aggregation bias, confirmation bias</td>
+</tr>
+<tr class="odd">
+<td>Peer review</td>
+<td>Review the findings, uncovering any biases and erroneous assumptions, and suggest improvements to the analysis.</td>
+<td>Authority bias</td>
+</tr>
+<tr class="even">
+<td>Data communication</td>
+<td>Share the findings with the community and general public.</td>
+<td>Reporting bias</td>
+</tr>
+<tr class="odd">
+<td>Data consumption</td>
+<td>Apply the findings to make decisions, solve real-life problems, and use them as input for new or follow-up studies.</td>
+<td>Confirmation bias</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>As we observe from our data science life cycle journey, data at every phase carries systemic biases that can easily skew findings and amplify disparities. If data professionals are not careful enough in their quest to make the world a better place, or in most cases, to simply solve mundane research and business problems, they might inadvertently exacerbate historical disparities and propagate them into the future via predictive models. Likewise, editors, peer reviewers, and the general public ought to be aware of the challenges and potential biases in the data science life cycle to become responsible consumers of data. The framework presented in this article is designed to assist in addressing these challenges and mitigating potential biases within data science, and as such to contribute to our goal of making the world a better place.<br>
+</p>
+<p><strong>Citations</strong></p>
+<p><sup>[1]</sup> How Bias Affects Scientific Research | Science News Learning. 4 Dec.&nbsp;2020, <a href="https://www.sciencenews.org/learning/guide/component/how-bias-affects-scientific-research">source</a>.</p>
+<p><sup>[2]</sup> UNDPGhana. Environment and Climate Change in Ghana Policy Brief. Dec.&nbsp;2021, <a href="https://www.undp.org/sites/g/files/zskgke326/files/migration/gh/e579ff4c8c129655c9f072d935069db49b04837ad192810ad872caa27658a36b.pdf">source</a>.</p>
+<p><sup>[3]</sup> Gillis, Justin, and John Schwartz. “Deeper Ties to Corporate Cash for Doubtful Climate Researcher.” The New York Times, 21 Feb.&nbsp;2015. NYTimes.com, <a href="https://www.nytimes.com/2015/02/22/us/ties-to-corporate-cash-for-climate-change-researcher-Wei-Hock-Soon.html">source</a>.</p>
+<p><sup>[4]</sup> Maxim Lisnic, Cole Polychronis, Alexander Lex, and Marina Kogan. 2023. Misleading Beyond Visual Tricks: How People Actually Lie with Charts. In Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (CHI ’23), April 23–28, 2023, Hamburg, Germany. ACM, New York, NY, USA 21 Pages. <a href="https://doi.org/10.1145/3544548.3580910">source</a>.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{protsukha2023,
+  author = {Protsukha, Oksana},
+  title = {Bias in {Data} {Science}},
+  date = {2023-12-27},
+  url = {https://oksanaprotsukha.github.io/portfolio/posts/2023-12-27-bias-in-data-science/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-protsukha2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Protsukha, Oksana. 2023. <span>“Bias in Data Science.”</span> December
+27, 2023. <a href="https://oksanaprotsukha.github.io/portfolio/posts/2023-12-27-bias-in-data-science/">https://oksanaprotsukha.github.io/portfolio/posts/2023-12-27-bias-in-data-science/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
