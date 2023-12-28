@@ -10,7 +10,7 @@ author:
     affiliation-url: https://ucsb-meds.github.io
 date: 2023-12-15
 categories: [Statistics, R, Energy, EV]
-image: evse_1.png
+image: ev.jpeg
 ---
 
 ## **Overview**
