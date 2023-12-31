@@ -150,9 +150,11 @@ blkout <- (nt_20210207 - nt_20210216) > 200
 blkout[blkout == FALSE] <- NA 
 ```
 
-To proceed, I narrowed down the blackout locations to the Houston metropolitan area by cropping the blackout raster to the area of interest.  To do so I converted the raster with the blackout locations into an `sf` object and constructed a `polygon` with the boundaries of Houston metropolitan area.\
+To proceed, I narrowed down the blackout locations to the Houston metropolitan area by cropping the blackout raster to the area of interest.  To do so I converted the raster with the blackout locations into an `sf` object and constructed a `polygon` with the boundaries of Houston metropolitan area.
 
-⚠️To maintain an accuracy of analysis I applied EPSG: 3083 (NAD83 / Texas Centric Albers Equal Area) projection for the cropped blackout dataset, specifically the dataframe with Houston metropolitan area geometries.
+::: callout-note
+To maintain an accuracy of analysis I applied EPSG: 3083 (NAD83 / Texas Centric Albers Equal Area) projection for the cropped blackout dataset, specifically the dataframe with Houston metropolitan area geometries.
+:::
 
 ```{r crop_blackouts_to_houston}
 # convert blackout mask to sf object
@@ -176,9 +178,10 @@ hstn_blkout <- blkout_sf[hstn, ] %>%
   st_transform(crs = "EPSG:3083") 
 ```
 
-```{r plot_blackout_intensity, echo=FALSE}
+```{r plot_blackout_intensity, echo=FALSE, message=FALSE}
 # plot blackout locations within Texas and Houston metropolitan area
 h1 <- ggplot() +
+  annotation_map_tile(zoom = 10, cachedir = system.file("rosm.cache", package = "ggspatial")) +
   geom_sf(data = blkout_sf, 
           color = '#000080') +
   geom_sf(data = hstn, 
@@ -190,6 +193,7 @@ h1 <- ggplot() +
   theme_minimal()
 
 h2 <- ggplot() +
+  annotation_map_tile(zoom = 10, cachedir = system.file("rosm.cache", package = "ggspatial")) +
   geom_sf(data = hstn_blkout, 
           color = '#000080') +
   ggtitle('Blackout intensity in Houston metropolitan area, TX') +
@@ -259,7 +263,7 @@ b2 <- ggplot() +
   ggtitle('Blackouts with buffers, Houston, TX') +
   theme_minimal()
   
-b1 + b2
+b2 + b1
 ```
 
 ```{r test_excl_buffers, eval=FALSE, echo=FALSE}
@@ -404,7 +408,7 @@ I've visualized the analysis results using the following representations:
 
 -   a map illustrating the distribution of median income across census tracts, highlighting areas affected by blackouts.
 
-```{r blackout_by_income_map, include=TRUE, warning=FALSE}
+```{r blackout_by_income_map, include=TRUE, warning=FALSE, message=FALSE}
 #| code-fold: true
 
 # define income quintiles
@@ -428,6 +432,7 @@ ct_centroids <- hstn_ct_blkout %>%
 
 # plot a map
 m1 <- ggplot() +
+  annotation_map_tile(zoom = 10, cachedir = system.file("rosm.cache", package = "ggspatial")) +
   geom_sf(data = hstn_ct_blkout, aes(fill = income_quintile), alpha = 0.8) +
   scale_fill_manual(values = setNames(color_palette, quintiles_labs),
                     name = 'Income Quintiles') +
