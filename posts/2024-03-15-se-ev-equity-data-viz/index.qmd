@@ -33,7 +33,7 @@ rootdir <- "/Users/oksi/workspace/evse_equity/eds240_HW4/"
 
 ## Background
 
-In this blog post, we will create three charts to investigate the accessibility of charging infrastructure for disadvantaged communities. Before we proceed to the data and code, let's consider what makes this this topic important.
+In this blog post, we will create three charts to investigate the accessibility of charging infrastructure for disadvantaged communities. Before we proceed to the data and code, let's consider what makes this topic important.
 
 With a rapid transition to "green economy" EV charging infrastructure has come into the spotlight. Initiatives like California's adoption of ["The Advanced Clean Cars II"](https://ww2.arb.ca.gov/our-work/programs/advanced-clean-cars-program/advanced-clean-cars-ii) in 2022 mandating all new vehicle sales in California be zero-emissions vehicles (ZEV) by 2035, further turned attention to the availability of charging infrastructure. As states like Rhode Island, Washington, Virginia, Vermont, Oregon, New York, and Massachusetts adopted similar mandates and Connecticut, Colorado, Delaware, Maryland, New Jersey, New Mexico, Minnesota, and Nevada are expected to follow suit, the question in inclusivity of this transition becomes ever important. Will disadvantaged communities have equitable access to the benefits of the green economy, or will they be left behind? While high EV prices and limited availability remain primary obstacles, the lack of accessible charging infrastructure poses a challenge of its own. Insufficient charging infrastructure charging in these communities can discourage the households from adopting EVs. Furthermore, charging infrastructure offers multiple benefits to the communities where they are implemented, such as improved air quality, increased business opportunities, and higher real estate values, and etc. (refer to [DOE website](https://www.transportation.gov/rural/ev/toolkit/ev-benefits-and-challenges/community-benefits). Disadvantaged communities, in particular, stand to gain from these improvements.
 
@@ -339,7 +339,7 @@ export(sunburst_p, file = ("assets/sunburst_p.png"))
 
 ```{r, dumbell-plot, results='asis', fig.width=12, fig.height=8, out.width="80%", out.height="80%"}
 #| code-fold: true
-#| fig-align: "center"
+#| fig-align: 'left'
 #| fig-cap: "Comparing EV Charger Share: State Population vs. Disadvantaged Communities"
 #| fig-alt: "A dumbell plot that compares the ratios of EV charging ports to state population with those within disadvantaged communities in the 90th percentile of traffic proximity"
 
@@ -449,7 +449,10 @@ dumbell_p <- dumbell_p +
   
 # display dumbell plot
 dumbell_p
+```
 
+
+```{r, dumbell-plot-save, results='hide', echo=FALSE}
 # export dumbell plot
 ggsave(file = ("assets/dumbell_p_bg.png"), plot = dumbell_p)
 
@@ -599,12 +602,10 @@ choropleth_p <- ggdraw() +
 ```
 
 
-```{r , choropleth-display, fig.width=12, fig.height=8, out.width="100%", out.height="100%"}
-#| code-fold: true
+```{r , choropleth-display, echo=FALSE, fig.width=12, fig.height=8, out.width="100%", out.height="100%"}
 #| fig-align: center
 #| fig-cap: "A distribution of EV chargers in New York relative to disadvantaged communities as of March 2024"
 #| fig-alt: "A main and inset choropleth maps plot that display where EV charging stations (DC fast chargers and level 2 chargers) and disadvantaged communities are located"
-
 # display choropleth maps
 choropleth_p
 
