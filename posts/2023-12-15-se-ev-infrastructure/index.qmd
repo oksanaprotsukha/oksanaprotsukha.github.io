@@ -19,7 +19,7 @@ In this analysis I explore inequality trends in electric vehicle (EV) charging n
 
 ### Research Question:
 
-### [Are electric vehicle charging stations less likely to be installed in low-income communities in comparison to higher-income ones?]{style="color:#2a9d8f; text-align: center;"}
+> [Are electric vehicle charging stations less likely to be installed in low-income communities in comparison to higher-income ones?]{style="color:#2a9d8f; text-align: center;"}
 
 ### Significance
 

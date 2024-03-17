@@ -1,0 +1,63 @@
+
+
+```{r}
+# load packages
+library(httr)
+library(jsonlite)
+library(tidyverse)
+library(readr)
+library(sf)
+```
+
+```{r}
+# load configuration
+here::set_here(path='/Users/oksi/Documents/UCSB/MEDS/EDS-240/assignments/eds240-HW4/', verbose = TRUE)
+source(file.path(here::here('src','config.R')))
+
+# retrieve API Key
+api_key <- NREL_API_KEY
+```
+
+```{r}
+# get charging stations for United States
+# specify API endpoint and parameters
+api_url <- "https://developer.nrel.gov/api/alt-fuel-stations/v1"
+
+api_params <- list(
+  format = "json",  
+  api_key = api_key, 
+  status = paste(c("E", "P"), collapse = ","), # E = charging stations in operation; P = planned
+  access = "public",
+  fuel_type = "ELEC",
+  cng_vehicle_class = "LD", # LD = light duty vehicles
+  country = "US",
+  limit = "all"
+)
+
+# construct the full URL with parameters
+request_url <- modify_url(api_url, query = api_params)
+
+# make a GET request to the API
+response <- GET(request_url)
+
+# extract the fuel_stations data from the response
+fuel_stations_us_df <- content(response, "parsed")$fuel_stations
+
+# convert the list to a dataframe
+fuel_stations_us_df <- as.data.frame(do.call(rbind, fuel_stations_us_df))
+
+# select the fields for analysis
+fuel_stations_us_df_clean <- fuel_stations_us_df %>% 
+  filter(!is.na(fuel_type_code)) %>% 
+  select('id', 'status_code', 'access_code','owner_type_code', 'open_date', 'restricted_access', 'maximum_vehicle_class','facility_type', 'city','state','zip','ev_workplace_charging', 'ev_level1_evse_num', 'ev_level2_evse_num', 'ev_dc_fast_num' , 'longitude', 'latitude')
+
+# flatten data frame - NOT WORKING CODE
+# fuel_stations_us_df_clean <- fuel_stations_us_df_clean %>%
+#   mutate(across(where(is.list), unnest))
+
+# convert data frame to sf object
+us_ev_sf <- fuel_stations_us_df_clean %>%
+  st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
+
+```
+

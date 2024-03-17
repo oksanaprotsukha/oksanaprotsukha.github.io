@@ -201,7 +201,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><strong>Overview</strong></a>
   <ul class="collapse">
   <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research Question:</a></li>
-  <li><a href="#are-electric-vehicle-charging-stations-less-likely-to-be-installed-in-low-income-communities-in-comparison-to-higher-income-ones" id="toc-are-electric-vehicle-charging-stations-less-likely-to-be-installed-in-low-income-communities-in-comparison-to-higher-income-ones" class="nav-link" data-scroll-target="#are-electric-vehicle-charging-stations-less-likely-to-be-installed-in-low-income-communities-in-comparison-to-higher-income-ones"><span style="color:#2a9d8f; text-align: center;">Are electric vehicle charging stations less likely to be installed in low-income communities in comparison to higher-income ones?</span></a></li>
   <li><a href="#significance" id="toc-significance" class="nav-link" data-scroll-target="#significance">Significance</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#problem-setup" id="toc-problem-setup" class="nav-link" data-scroll-target="#problem-setup">Problem Setup</a></li>
@@ -231,9 +230,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this analysis I explore inequality trends in electric vehicle (EV) charging network distribution in California. An earlier study from 2020 on this topic identified disparities across race and income in EV charging infrastructure [1]. However, we have seen a 136 % increase in new zero-emissions vehicle (ZEV) sales and 33 % increase in charging stations deployment in California since the study was published [2]. In my analysis I aim to identify whether the earlier trends of inequality in EV infrastructure deployment persist.</p>
 <section id="research-question" class="level3">
 <h3 class="anchored" data-anchor-id="research-question">Research Question:</h3>
-</section>
-<section id="are-electric-vehicle-charging-stations-less-likely-to-be-installed-in-low-income-communities-in-comparison-to-higher-income-ones" class="level3">
-<h3 class="anchored" data-anchor-id="are-electric-vehicle-charging-stations-less-likely-to-be-installed-in-low-income-communities-in-comparison-to-higher-income-ones"><span style="color:#2a9d8f; text-align: center;">Are electric vehicle charging stations less likely to be installed in low-income communities in comparison to higher-income ones?</span></h3>
+<blockquote class="blockquote">
+<p><span style="color:#2a9d8f; text-align: center;">Are electric vehicle charging stations less likely to be installed in low-income communities in comparison to higher-income ones?</span></p>
+</blockquote>
 </section>
 <section id="significance" class="level3">
 <h3 class="anchored" data-anchor-id="significance">Significance</h3>
@@ -441,16 +440,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<table class="table table-sm table-striped small">
 <caption>EV Charging Availability per Census Block, California</caption>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 23%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Census Block ID</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Total Ports per Block</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Total Ports Capita Pct</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">P_ptraf</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">P_lowincpct</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">EVSE Available</th>
+<th style="text-align: left;">Census Block ID</th>
+<th style="text-align: right;">Total Ports per Block</th>
+<th style="text-align: right;">Total Ports Capita Pct</th>
+<th style="text-align: right;">P_ptraf</th>
+<th style="text-align: right;">P_lowincpct</th>
+<th style="text-align: right;">EVSE Available</th>
 </tr>
 </thead>
 <tbody>
@@ -504,8 +511,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-
-
 </div>
 </div>
 <section id="basic-data-visualization" class="level4">
@@ -559,23 +564,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-1.1574359</td>
-<td style="text-align: right;">0.0297992</td>
-<td style="text-align: right;">-38.84114</td>
+<td style="text-align: right;">-1.1166684</td>
+<td style="text-align: right;">0.0295272</td>
+<td style="text-align: right;">-37.81830</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">p_lowincpct</td>
-<td style="text-align: right;">-0.0054354</td>
-<td style="text-align: right;">0.0003901</td>
-<td style="text-align: right;">-13.93333</td>
+<td style="text-align: right;">-0.0052204</td>
+<td style="text-align: right;">0.0003880</td>
+<td style="text-align: right;">-13.45622</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">p_ptraf</td>
-<td style="text-align: right;">0.0191817</td>
-<td style="text-align: right;">0.0003982</td>
-<td style="text-align: right;">48.16514</td>
+<td style="text-align: right;">0.0186964</td>
+<td style="text-align: right;">0.0003952</td>
+<td style="text-align: right;">47.31408</td>
 <td style="text-align: right;">0</td>
 </tr>
 </tbody>

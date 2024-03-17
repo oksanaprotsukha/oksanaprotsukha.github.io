@@ -2,4 +2,5 @@
 .Rproj.user
 .DS_Store
 .Rhistory
+.filepath.R
 
