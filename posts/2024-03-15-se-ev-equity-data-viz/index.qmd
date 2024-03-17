@@ -31,34 +31,6 @@ rootdir <- "/Users/oksi/workspace/evse_equity/eds240_HW4/"
 ```
 
 
-```{r, setup_libraries, message=FALSE, warning=FALSE, results='hide'}
-#| code-fold: true
-
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-##                                load packages                            
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-library(tidyverse) 
-library(patchwork)
-library(showtext) 
-library(janitor)
-library(lubridate)
-library(ggridges)
-library(data.table)
-library(plotly)
-library(ggimage)
-library(tigris)
-library(cowplot)
-library(here)
-
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-##                                import and process data                       
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-source(file.path(rootdir, 'src', 'prep.R'))
-
-```
-
 ## Background
 
 In this blog post, we will create three charts to investigate the accessibility of charging infrastructure for disadvantaged communities. Before we proceed to the data and code, let's consider what makes this this topic important.
@@ -170,6 +142,36 @@ Next, I utilized the following design approach to visualize the questions above.
 10. Applying a DEI lens to your design (e.g. considering the people / communities / places represented in the data, framing of the questions). My infographic was focused on identifying a bias in deployment of EV charging infrastructure with respect to disadvantaged communities. I attempted to maintain an objective tone in both my visuals and text. Specifically, I used a federally sponsored data set "Climate and Economic Screening Tool" to identify disadvantaged communities.
 
 ## Code 
+
+### Setup 
+
+```{r, setup_libraries, message=FALSE, warning=FALSE, results='hide'}
+#| code-fold: true
+
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##                                load packages                            
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+library(tidyverse) 
+library(patchwork)
+library(showtext) 
+library(janitor)
+library(lubridate)
+library(ggridges)
+library(data.table)
+library(plotly)
+library(ggimage)
+library(tigris)
+library(cowplot)
+library(here)
+
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##                                import and process data                       
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+source(file.path(rootdir, 'src', 'prep.R'))
+
+```
 
 ### Visualizations 
 
