@@ -25,11 +25,10 @@ knitr::opts_chunk$set(fig.width = 4, fig.height = 3,
                       tidy.opts = list(width.cutoff = 60), tidy = TRUE)
 
 # set your file path here
-rootdir <- "/Users/oksi/workspace/evse_equity/eds240_HW4/"
+rootdir <- "/Users/oksi/workspace/evse_equity_data_viz/"
 
 
 ```
-
 
 ## Background
 
@@ -49,56 +48,57 @@ With a rapid transition to "green economy" EV charging infrastructure has come i
 knitr::include_graphics("Infographic_Equitable_EV_Charging_Infrastructure.png")
 ```
 
-
 ## Data And Design process
 
 ### Data
 
 I used the following data sets to address the question about **equity within EV charging network distribution and deployment in the United States**:\
 
-**Dataset 2**. Climate and Economic Justice Screening Tool.\ 
-Source: [CEJST](https://screeningtool.geoplatform.gov/en/#3/33.47/-97.5)\
+**Dataset 2**. Climate and Economic Justice Screening Tool.  Source: [CEJST](https://screeningtool.geoplatform.gov/en/#3/33.47/-97.5)\
 
-::: {.callout-note}
+::: callout-note
 ## Learn about the dataset
-The dataset highlights disadvantaged census tracts across the United States, and the U.S. territories for the following categories: climate change, energy, health, housing, legacy pollution, transportation, water and wastewater, and workforce development.
-For this infographic I used transportation categories, as well as the community's status as disadvantaged or not. Overview and metadata details:
 
-        a.  [Description of the dataset](https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Spreadsheet-Tutorial.pdf).
-        b.  [Technical documentation and methodology](https://screeningtool.geoplatform.gov/en/methodology).
-        c.  [the GitHub repository](https://github.com/usds/justice40-tool/blob/main/DATASETS.md).
+The dataset highlights disadvantaged census tracts across the United States, and the U.S. territories for the following categories: climate change, energy, health, housing, legacy pollution, transportation, water and wastewater, and workforce development. For this infographic I used transportation categories, as well as the community's status as disadvantaged or not. Overview and metadata details:
+
+```         
+    a.  [Description of the dataset](https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Spreadsheet-Tutorial.pdf).
+    b.  [Technical documentation and methodology](https://screeningtool.geoplatform.gov/en/methodology).
+    c.  [the GitHub repository](https://github.com/usds/justice40-tool/blob/main/DATASETS.md).
+```
 :::
 
 **Climate and Economic Justice Tool data set** variables used in modeling:\
-* SF: State/Territory\
-* CF: County Name\
-* GEOID: Census Tract\
-* TPF: Total population\
-* TF_PFS: Traffic proximity and volume (percentile)\
-* TP_ET: Greater than or equal to the 90th percentile for traffic proximity\
-* SN_C: Definition N community, including adjacency index tracts\
+\* SF: State/Territory\
+\* CF: County Name\
+\* GEOID: Census Tract\
+\* TPF: Total population\
+\* TF_PFS: Traffic proximity and volume (percentile)\
+\* TP_ET: Greater than or equal to the 90th percentile for traffic proximity\
+\* SN_C: Definition N community, including adjacency index tracts\
 
-**Dataset 2**. Alternative Fuels Data Center: Electric Vehicle Charging Station Locations.\ 
-Source: [NREL](https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/all)\
+**Dataset 2**. Alternative Fuels Data Center: Electric Vehicle Charging Station Locations.  Source: [NREL](https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/all)\
 
-::: {.callout-note}
+::: callout-note
 ## Learn about the dataset
+
 The data set is accessible via NREL maintained API and provides a list of over 70 features related to alternative fuels alternative fuels stations. For this infographic I used a subset of attributes specific to electric vehicle charging stations.
 :::
 
 **NREL API data set** variables used in modeling:\
-* id: EV charger ID\
-* status_code: EV charger status (available, planned)\
-* ev_dc_fast_num: DC fast charging port type\
-* ev_level2_evse_num: Level 2 charging port type\
-* longtitude and latitude: position of an EV charging station\
+\* id: EV charger ID\
+\* status_code: EV charger status (available, planned)\
+\* ev_dc_fast_num: DC fast charging port type\
+\* ev_level2_evse_num: Level 2 charging port type\
+\* longtitude and latitude: position of an EV charging station\
 
-::: {.callout-tip}
+::: callout-tip
 ## Types of charging ports
+
 -   Level 1 connector (*out of scope from the analysis*): standardized connector primarily for home use.\
     The charge rate is 3-5 miles per hour.\
     Applicable for trips up to 40 miles or less daily.\
-    
+
 -   Level 2 charging port: standardized connector primarily for home or office use.\
     The charge rate is 15-30 miles per hour.\
     Applicable for trips 100+ miles daily.\
@@ -108,11 +108,9 @@ The data set is accessible via NREL maintained API and provides a list of over 7
     Applicable for trips 300+ miles daily.\
 :::
 
-
 ### Design Decisions
 
-I designed the infographic to answer the question, **"Is our EV charging infrastructure equitable?"**.
-To do so, I created three different visuals each aimed at answering a leading question.
+I designed the infographic to answer the question, **"Is our EV charging infrastructure equitable?"**. To do so, I created three different visuals each aimed at answering a leading question.
 
 **Question 1**: Which of the top 5 states have the most number of EV charging ports installed or in progress to date? This helped me to target my analysis on the states that have the most data to work with.\
 
@@ -122,28 +120,30 @@ To do so, I created three different visuals each aimed at answering a leading qu
 
 Next, I utilized the following design approach to visualize the questions above.
 
-1. Graphic form. \
-**Question 1**: I chose sunburst plot to display the number of EV chargers in each state. The choice was informed by a compact layout of sunburst plot and its ability to visualize distribution across multiple sections without overcrowding a figure. Sunburst plot also allows zooming into individual states to access statistics. *Note: the latter feature is available in the interactive mode only*.
-**Question 2**: A dumbbell plot was selected for its effectiveness in comparing two values measured in the same units. It offers a compact layout and ease of interpretation, which made it a preferred choice for visualizing the second question.\
-**Question 3**: Finally, I used a choropleth style map to address the third question. This choice was driven by the need to visualize the distribution of EV charging within different types of census tracts across the state.\
+1.  Graphic form.\
+    **Question 1**: I chose sunburst plot to display the number of EV chargers in each state. The choice was informed by a compact layout of sunburst plot and its ability to visualize distribution across multiple sections without overcrowding a figure. Sunburst plot also allows zooming into individual states to access statistics. *Note: the latter feature is available in the interactive mode only*. **Question 2**: A dumbbell plot was selected for its effectiveness in comparing two values measured in the same units. It offers a compact layout and ease of interpretation, which made it a preferred choice for visualizing the second question.\
+    **Question 3**: Finally, I used a choropleth style map to address the third question. This choice was driven by the need to visualize the distribution of EV charging within different types of census tracts across the state.\
 
-2. Text (e.g. titles, captions, annotations, axis labels, axis ticks, alt text). For the first and second figures I included the titles, while I relied on the legend to explain the choropleth map. I excluded the axis titles from all graphs it was not necessary to understand the content. This allowed me maintaining clean layouts.
+2.  Text (e.g. titles, captions, annotations, axis labels, axis ticks, alt text). For the first and second figures I included the titles, while I relied on the legend to explain the choropleth map. I excluded the axis titles from all graphs it was not necessary to understand the content. This allowed me maintaining clean layouts.
 
-3. Themes (i.e. all non-data plot elements). I used theme_bw and theme_void to keep the visuals clean by removing unnecessary elements such as axis from the choropleth maps or grid from the dumbell plot.
-4. Colors. I opted for a pastel palette of green, pink and yellow. 
-* A green color was used to symbolically display EV charger locations pointing towards "green" economy.\
-* A pink color with a shade of brown was used to identify disadvantaged communities and carries a slight connotation of "lacking something".
-* A light yellow was used as a background color as a complementary color that allows for a sufficient level of contrast between the different elements of visualizations. 
-5. Typography: I used default fonts in my infographic to keep the layout simple and avoid distractions from the main questions. Where appropriate, I used a bold fontface and changed the size of the fonts for readability. 
-6. General design (e.g. group order, spacing, text orientation, data-ink ratio, creating a visual hierarchy, avoiding information overload). In my infographic I aimed to guide a viewer towards answering the main question "Is EV infrastructure in the United States equitable?". For this I positioned the figures to transition from an overview (sunburst plot) to more focused details (choroplath maps). 
-7. Contextualizing your data.
-8. Centering your primary message. The primary figure - a choroplath map - displays the distribution of EV chargers relative to disadvantaged communities. While it is the most critical element in answering the main question, I placed it below the other two figures to maintain a logical sequence in the narrative.
-9. Considering accessibility (e.g. colorblind-friendly palettes / contrast, alt text). I attempted to use colors that are accessible for viewers who have color-blindness conditions. While for most cases of color-blindness I was able to achieve a sufficient level of contrast to view the figures, in few instances, such as monochromacy and protanipia, the contrast is lacking. I used an online color blindness [simulator](https://www.color-blindness.com/coblis-color-blindness-simulator/) to verify the figures for color-blindness. To address these cases, I included an alt-text to all three visualizations.
+3.  Themes (i.e. all non-data plot elements). I used theme_bw and theme_void to keep the visuals clean by removing unnecessary elements such as axis from the choropleth maps or grid from the dumbell plot.
+
+4.  Colors. I opted for a pastel palette of green, pink and yellow.
+
+-   A green color was used to symbolically display EV charger locations pointing towards "green" economy.\
+-   A pink color with a shade of brown was used to identify disadvantaged communities and carries a slight connotation of "lacking something".
+-   A light yellow was used as a background color as a complementary color that allows for a sufficient level of contrast between the different elements of visualizations.
+
+5.  Typography: I used default fonts in my infographic to keep the layout simple and avoid distractions from the main questions. Where appropriate, I used a bold fontface and changed the size of the fonts for readability.
+6.  General design (e.g. group order, spacing, text orientation, data-ink ratio, creating a visual hierarchy, avoiding information overload). In my infographic I aimed to guide a viewer towards answering the main question "Is EV infrastructure in the United States equitable?". For this I positioned the figures to transition from an overview (sunburst plot) to more focused details (choroplath maps).
+7.  Contextualizing your data.
+8.  Centering your primary message. The primary figure - a choroplath map - displays the distribution of EV chargers relative to disadvantaged communities. While it is the most critical element in answering the main question, I placed it below the other two figures to maintain a logical sequence in the narrative.
+9.  Considering accessibility (e.g. colorblind-friendly palettes / contrast, alt text). I attempted to use colors that are accessible for viewers who have color-blindness conditions. While for most cases of color-blindness I was able to achieve a sufficient level of contrast to view the figures, in few instances, such as monochromacy and protanipia, the contrast is lacking. I used an online color blindness [simulator](https://www.color-blindness.com/coblis-color-blindness-simulator/) to verify the figures for color-blindness. To address these cases, I included an alt-text to all three visualizations.
 10. Applying a DEI lens to your design (e.g. considering the people / communities / places represented in the data, framing of the questions). My infographic was focused on identifying a bias in deployment of EV charging infrastructure with respect to disadvantaged communities. I attempted to maintain an objective tone in both my visuals and text. Specifically, I used a federally sponsored data set "Climate and Economic Screening Tool" to identify disadvantaged communities.
 
-## Code 
+## Code
 
-### Setup 
+### Setup
 
 ```{r, setup_libraries, message=FALSE, warning=FALSE, results='hide'}
 #| code-fold: true
@@ -169,11 +169,10 @@ library(here)
 ##                                import and process data                       
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-source(file.path(rootdir, 'src', 'prep.R'))
-
+source(file.path(rootdir, "src", "prep.R"))
 ```
 
-### Visualizations 
+### Visualizations
 
 #### Visualization 1: Sunburst chart
 
@@ -303,18 +302,18 @@ sunburst_p <- plot_ly(data = sunburstDF,
                       text = text_selected,  # set initial text to display EV charging ports for top n states
                       hovertext = text_all)  %>%  # set hover text to display ports for all states
   layout(title = "Which states have the highest number of EV charging ports \n planned and operational in the United States as of March 2024?",
-         margin = list(t = 70, b = 70, l = 5, r = 5),
+         margin = list(t = 75, b = 75, l = 5, r = 5),
          sunburstcolorway = c("West" = "#0c99c0",
-                              "Northeast" = "#E78173",
-                              "Southeast" = "#659b5e",
-                              "Midwest" = "#ffd23f",
+                              "Northeast" = "#AA4A44", 
+                              "Southeast" = "#659b5e",  
+                              "Midwest" = "#ECAC00", #ffd23f", 
                               "Southwest" = "#d3b88c"),
          paper_bgcolor = "#FCF7ED",
          font = list(size = 14),
          annotations = list(
            list(
              x = 0.5,
-             y = -0.1,  
+             y = -0.2,  
              xref = "paper",
              yref = "paper",
              text = 'Source: National Renewable Energy Laboratory (NREL)."Alternative Fuel Stations API Documentation."\n https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1',
@@ -327,13 +326,11 @@ sunburst_p <- plot_ly(data = sunburstDF,
 sunburst_p
 ```
 
-
 ```{r , sunburst-plot-save, results='hide', eval=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
 
 # save sunburst plot
 export(sunburst_p, file = ("assets/sunburst_p.png"))
 ```
-
 
 #### Visualization 2: dumbbell chart
 
@@ -386,8 +383,8 @@ ev_dac_us_chart <- ev_dac_us_df %>%
   distinct()
 
 # add custom images to the dataframe
-ev_state_pct_icon <- "ev_green_icon.png"
-ev_dac_pct_icon <- "ev_orange_icon.png"
+ev_state_pct_icon <- "ev_state_icon.png"
+ev_dac_pct_icon <- "ev_dac_icon.png"
 
 ev_dac_us_chart$ev_state_pct_icon <- ev_state_pct_icon
 ev_dac_us_chart$ev_dac_pct_icon <- ev_dac_pct_icon
@@ -406,7 +403,7 @@ dumbell_p <- ggplot(ev_dac_us_chart) +
   labs(y = "",
        x = "% of EV Charging Ports Per Capita",
        title = "Comparing EV Charger Share: State Population vs. Disadvantaged Communities",
-       subtitle = "Top 5 States by Number of Chargers Installed or Planned, as of March 2024",
+       subtitle = "Top 5 States by Number of Chargers Installed or In progress, as of March 2024",
        caption = 'Source: National Renewable Energy Laboratory (NREL)."Alternative Fuel Stations API Documentation."\n https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1') +
   scale_x_continuous(labels = scales::percent_format(scale = 1), 
                      expand=c(0.1, 0)) 
@@ -419,46 +416,54 @@ dumbell_p <- dumbell_p +
             color = "black",
             size = 0.05,
             alpha=0.8) +
-  geom_image(x = 0.109, y = 1.6, image = ev_state_pct_icon) +
+  geom_image(x = 0.109, y = 1.56, image = ev_state_pct_icon) +
   geom_image(x = 0.109, y = 1, image = ev_dac_pct_icon) +
-  annotate("text", x = 0.109, y = 2, 
+  annotate("text", x = 0.109, y = 1.9, 
            label = "Share of EV charging ports", 
-           size = 4,
+           size = 6,
            hjust = 0) +
-  annotate("text", x = 0.113, y = 1.6, 
+  annotate("text", x = 0.113, y = 1.56, 
            label = "per state population", 
-           size = 4,
+           size = 5,
            hjust = 0) +
   annotate("text", x = 0.113, y = 1, 
            label = "per state DAC population \nin top 10% traffic proximity", 
-           size = 4,
+           size = 5,
            hjust = 0) +
   guides(color = guide_legend(title = NULL)) +
   theme_bw() +
   theme(axis.title.x = element_blank(),
-        #axis.title.x = element_text(margin = margin(t = 15), size = 12, color = "white"),
-        axis.title.y = element_text(margin = margin(r = 15), size = 12),
-        plot.title = element_text(margin = margin(b = 10), color = "black"),
-        plot.subtitle = element_text(margin = margin(b = 10), color = "black"),
+        axis.title.y = element_text(margin = margin(r = 15), size = 16),
+        plot.title = element_text(margin = margin(b = 10), color = "black", size = 18),
+        plot.subtitle = element_text(margin = margin(b = 20), color = "black", size = 16),
         plot.caption = element_text(margin = margin(l=0, t = 15), size = 10, color = "black"),
-        axis.text = element_text(size = 12, color = "black"),
+        axis.text = element_text(size = 16, color = "black"),
         panel.grid = element_blank(), 
         plot.background = element_rect("#FCF7ED", color = "transparent"),
-        # plot.background = element_rect("#1A5276", color = "transparent"), ##2ECC71
         panel.background = element_rect("#FBFAF5")) 
   
 # display dumbell plot
 dumbell_p
 ```
 
-
 ```{r, dumbell-plot-save, results='hide', echo=FALSE}
 # export dumbell plot
 ggsave(file = ("assets/dumbell_p_bg.png"), plot = dumbell_p)
 
+ggsave(
+  file = "assets/dumbell_p_bg.png", 
+  plot = dumbell_p, 
+  width = 12, 
+  height = 8, 
+  units = "in", 
+  dpi = 300, 
+  scale = 1,
+  type = "cairo"
+)
+
 ```
 
-#### Visualization: Choropleth maps 
+#### Visualization: Choropleth maps
 
 ```{r , choropleth, results='hide'}
 #| code-fold: true
@@ -573,7 +578,7 @@ dac_zoom_map <- ggplot() +
   scale_fill_manual(name = " Disadvantaged Community", 
                     values = c("Non-DAC" = "#fff7d1", 
                                "DAC" = "#ebb3a9", 
-                               "DAC > 90th perc. Traffic Proximity" = "#861657",
+                               "DAC > 90th perc. Traffic Proximity" = "#861657", 
                                "Uknown" = "#d9dcd6")) 
 
 dac_zoom_map <- dac_zoom_map +
@@ -601,7 +606,6 @@ choropleth_p <- ggdraw() +
   draw_plot(dac_zoom_map, x = 0.455, y = 0.19, width = 0.6, height = 0.6)
 ```
 
-
 ```{r , choropleth-display, echo=FALSE, fig.width=12, fig.height=8, out.width="100%", out.height="100%"}
 #| fig-align: center
 #| fig-cap: "A distribution of EV chargers in New York relative to disadvantaged communities as of March 2024"
@@ -613,4 +617,3 @@ choropleth_p
 ggsave(file = ("assets/choropleth_p.png"), plot = choropleth_p)
 
 ```
-
