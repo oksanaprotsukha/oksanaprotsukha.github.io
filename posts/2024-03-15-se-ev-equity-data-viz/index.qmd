@@ -359,13 +359,13 @@ sunburst_p
 export(sunburst_p, file = ("assets/sunburst_p.png"))
 ```
 
-#### Visualization 2: dumbbell chart
+#### Visualization 2: Dumbbell chart
 
-```{r, dumbell-plot, results='asis', fig.width=12, fig.height=8, out.width="80%", out.height="80%"}
+```{r, dumbbell-plot, results='asis', fig.width=12, fig.height=8, out.width="80%", out.height="80%"}
 #| code-fold: true
 #| fig-align: 'left'
 #| fig-cap: "Comparing EV Charger Share: State Population vs. Disadvantaged Communities"
-#| fig-alt: "A dumbell plot that compares the ratios of EV charging ports to state population with those within disadvantaged communities in the 90th percentile of traffic proximity"
+#| fig-alt: "A dumbbell plot that compares the ratios of EV charging ports to state population with those within disadvantaged communities in the 90th percentile of traffic proximity"
 
 # --- Data Wrangling --- #
 
@@ -418,7 +418,7 @@ ev_dac_us_chart$ev_dac_pct_icon <- ev_dac_pct_icon
 
 # --- Dumbbell chart --- #
 # create a graph with points as images 
-dumbell_p <- ggplot(ev_dac_us_chart) +
+dumbbell_p <- ggplot(ev_dac_us_chart) +
   geom_segment(aes(x = ev_ports_per_state_pop_pct,
                    xend = total_ports_dac_pop_pct,
                    y = fct_reorder(state_name, ev_ports_per_state_pop_pct),
@@ -436,7 +436,7 @@ dumbell_p <- ggplot(ev_dac_us_chart) +
                      expand=c(0.1, 0)) 
     
 # add legend and theme
-dumbell_p <- dumbell_p + 
+dumbbell_p <- dumbbell_p + 
   geom_rect(xmin = 0.105, xmax=0.16,
             ymin = 0.7, ymax = 2.1,
             fill = NA,
@@ -469,17 +469,17 @@ dumbell_p <- dumbell_p +
         plot.background = element_rect("#FCF7ED", color = "transparent"),
         panel.background = element_rect("#FBFAF5")) 
   
-# display dumbell plot
-dumbell_p
+# display dumbbell plot
+dumbbell_p
 ```
 
-```{r, dumbell-plot-save, results='hide', echo=FALSE}
-# export dumbell plot
-ggsave(file = ("assets/dumbell_p_bg.png"), plot = dumbell_p)
+```{r, dumbbell-plot-save, results='hide', echo=FALSE}
+# export dumbbell plot
+ggsave(file = ("assets/dumbbell_p_bg.png"), plot = dumbbell_p)
 
 ggsave(
-  file = "assets/dumbell_p_bg.png", 
-  plot = dumbell_p, 
+  file = "assets/dumbbell_p_bg.png", 
+  plot = dumbbell_p, 
   width = 12, 
   height = 8, 
   units = "in", 
@@ -490,7 +490,7 @@ ggsave(
 
 ```
 
-#### Visualization: Choropleth maps
+#### Visualization 3: Choropleth maps
 
 ```{r , choropleth, results='hide'}
 #| code-fold: true
