@@ -134,9 +134,9 @@ The data set is accessible via NREL maintained API and provides a list of over 7
 
 2.  Select the graphic form to visualize each question presented in the infographic.
 
-    -   **Graphic form for Question 1**: I chose a sunburst plot to display the number of EV chargers in each state. The choice was informed by the compact layout of the sunburst plot and its ability to visualize distribution across multiple sections without overcrowding a figure. Additionally, the sunburst plot allows zooming into individual states to access statistics. ***Note**: the latter feature is available in the interactive mode only.*
-    -   **Graphic form for Question 2**: A dumbbell plot was selected for its effectiveness in comparing two values measured in the same units. It offers a compact layout and ease of interpretation, making it the preferred choice for visualizing the second question.
-    -   **Graphic form for Question 3**: Finally, I used a choropleth-style map with an inset to address the third question. This choice was driven by the need to visualize the distribution of EV charging stations within different types of census tracts across the state.
+    -   **For Question 1**, I chose a sunburst plot to display the number of EV chargers in each state. The choice was informed by the compact layout of the sunburst plot and its ability to visualize distribution across multiple sections without overcrowding a figure. Additionally, the sunburst plot allows zooming into individual states to access statistics. ***Note**: the latter feature is available in the interactive mode only.*
+    -   **For Question 2**, I selected a dumbbell plot for its effectiveness in comparing two values measured in the same units. It offers a compact layout and ease of interpretation, making it the preferred choice for visualizing the second question.
+    -   **For Question 3**, I used a choropleth-style map with an inset. I made this choice to visualize the distribution of EV charging stations within different types of census tracts across the state.
 
 3.  Decide on the design approach (theme, fonts, colors, etc.).
 
