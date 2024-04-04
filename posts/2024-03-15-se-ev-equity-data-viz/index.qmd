@@ -59,13 +59,13 @@ I used the following data sets to address the question about **equity within EV 
 ::: callout-note
 ## Learn about the dataset
 
-The dataset highlights disadvantaged census tracts across the United States, and the U.S. territories for the following categories: climate change, energy, health, housing, legacy pollution, transportation, water and wastewater, and workforce development. For this infographic I used transportation categories, as well as the community's status as disadvantaged or not. Overview and metadata details:
+The dataset highlights disadvantaged census tracts across the United States, and the U.S. territories for the following categories: climate change, energy, health, housing, legacy pollution, transportation, water and wastewater, and workforce development. For this infographic I used transportation categories, as well as the community's status as disadvantaged or not.
 
-```         
-    a.  [Description of the dataset](https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Spreadsheet-Tutorial.pdf).
-    b.  [Technical documentation and methodology](https://screeningtool.geoplatform.gov/en/methodology).
-    c.  [the GitHub repository](https://github.com/usds/justice40-tool/blob/main/DATASETS.md).
-```
+Overview and metadata details:
+
+a.  [Description of the dataset](https://static-data-screeningtool.geoplatform.gov/data-versions/1.0/data/score/downloadable/Using-the-CEJST-Spreadsheet-Tutorial.pdf)
+b.  [Technical documentation and methodology](https://screeningtool.geoplatform.gov/en/methodology)
+c.  [The GitHub repository](https://github.com/usds/justice40-tool/blob/main/DATASETS.md)
 :::
 
 **Climate and Economic Justice Tool data set** variables used in modeling:
@@ -169,6 +169,11 @@ The data set is accessible via NREL maintained API and provides a list of over 7
     As my infographic focused on identifying bias in the deployment of EV charging infrastructure concerning disadvantaged communities, I aimed to maintain an objective tone in both my visuals and text. Specifically, I utilized a federally sponsored dataset, the "Climate and Economic Screening Tool," to identify disadvantaged communities.
 
 ## Code
+
+::: {.callout-note}
+Github repository with the reproducible code: [evse_equity_data_viz](https://github.com/oksanaprotsukha/evse_equity_data_viz)
+
+:::
 
 ### Setup
 
