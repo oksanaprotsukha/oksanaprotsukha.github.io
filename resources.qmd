@@ -1,3 +1,13 @@
-Useful resources:
+---
+toc: false
+---
 
-[How to create a website with Quatro](https://ucsb-meds.github.io/creating-quarto-websites/)
+## Energy:
+[Primer on energy concepts and units](https://pure.iiasa.ac.at/id/eprint/11190/1/EnergyPrimer_Aug15_HiRes.pdf)\
+[Electric Power Systems: A Conceptual Introduction by Alexandra von Meier](https://www.amazon.com/Electric-Power-Systems-Conceptual-Introduction/dp/0471178594)\
+[US Electricity Markets 101](https://www.rff.org/publications/explainers/us-electricity-markets-101/)\
+[Clean Energy 101: Heat Pumps](https://rmi.org/clean-energy-101-heat-pumps/)\
+
+## Miscellaneous:
+[How to create a website with Quatro](https://ucsb-meds.github.io/creating-quarto-websites/)\
+[Climate DataLab](https://climate-datalab.org)\
